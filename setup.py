@@ -1,9 +1,11 @@
 from setuptools import setup, find_packages  # Always prefer setuptools over distutils
 from codecs import open  # To use a consistent encoding
 from os import path
-import filterpy
+import sys
 
 here = path.abspath(path.dirname(__file__))
+sys.path.append(here)
+__version__ = "1.4.5"
 
 # Get the long description from the relevant file
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
@@ -15,7 +17,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    version=filterpy.__version__,
+    version=__version__,
 
     description='Kalman filtering and optimal estimation library',
     long_description=long_description,
@@ -78,7 +80,7 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
     install_requires=['numpy', 'scipy', 'matplotlib'],
-
+    setup_requires=['numpy', 'scipy', 'matplotlib'],
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.
